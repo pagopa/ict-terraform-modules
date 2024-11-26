@@ -1,0 +1,42 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36" version="24.9.1">
+  <diagram id="4WZmSYpkoyiS_aXek_K5" name="Page-1">
+    <mxGraphModel dx="1242" dy="785" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="LRTzXPa5cr26AKS6x3Df-2" value="self-signed cert" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=18;" parent="1" vertex="1">
+          <mxGeometry x="294" y="183.86" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="SQV9DvT5rrpoaavwSdlr-3" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="480" y="360" as="sourcePoint" />
+            <mxPoint x="480" y="40" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SQV9DvT5rrpoaavwSdlr-4" value="External Resources" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;rounded=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=18;fillColor=#f8cecc;strokeColor=#b85450;sketch=1;curveFitting=1;jiggle=2;" parent="1" vertex="1">
+          <mxGeometry x="520" y="40" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="SQV9DvT5rrpoaavwSdlr-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="640" y="103" as="sourcePoint" />
+            <mxPoint x="640" y="103" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SQV9DvT5rrpoaavwSdlr-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=18;curved=1;sketch=1;endArrow=classic;endFill=1;" parent="1" source="SQV9DvT5rrpoaavwSdlr-6" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="414" y="205.86" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SQV9DvT5rrpoaavwSdlr-6" value="key vault" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=18;" parent="1" vertex="1">
+          <mxGeometry x="560" y="195.86" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="nsqGqw4tysi-A5Z1NQSL-2" value="" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/app_services/App_Service_Certificates.svg;" vertex="1" parent="1">
+          <mxGeometry x="270" y="173" width="37.03" height="33.86" as="geometry" />
+        </mxCell>
+        <mxCell id="nsqGqw4tysi-A5Z1NQSL-3" value="" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/security/Key_Vaults.svg;" vertex="1" parent="1">
+          <mxGeometry x="540" y="173.86" width="38" height="38" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
