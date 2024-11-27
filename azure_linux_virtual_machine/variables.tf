@@ -1,3 +1,5 @@
+# general
+
 variable "base_name" {
   type        = string
   description = "Base name of the managed resources"
@@ -25,6 +27,8 @@ variable "index_suffix" {
   default     = null
 }
 
+# networking
+
 variable "subnet_id" {
   type        = string
   description = "Id of the subnet in which to deploy the VM. Not used when providing network_interface_ids"
@@ -48,6 +52,8 @@ variable "network_interface_ids" {
   description = "Network interfaces to attach to the VM. If null, a default one with private IP will be provided"
   default     = null
 }
+
+# vm
 
 variable "size" {
   type        = string
