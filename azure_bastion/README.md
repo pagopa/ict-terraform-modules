@@ -8,7 +8,36 @@ Creates an Azure Bastion host.
 
 ## Example usage
 
-TODO
+```terraform
+resource "azurerm_resource_group" "example" {
+  name     = "my-rg"
+  location = "italynorth"
+  tags     = var.tags
+}
+
+resource "azurerm_virtual_network" "example" {
+  name                = "my-vnet"
+  location            = "italynorth"
+  location            = azurerm_resource_group.example.location
+  resource_group_name = azurerm_resource_group.example.name
+  address_space       = ["10.0.0.0/16"]
+  tags                = var.tags
+}
+
+module "bastion" {
+  source = "github.com/pagopa/ict-terraform-modules//azure_bastion?ref=v1.0.0"
+
+  name                    = "my-bastion"
+  location                = azurerm_resource_group.example.location
+  resource_group_name     = azurerm_resource_group.example.name
+  sku                     = "Standard"
+  scale_units             = 2
+  virtual_network_name    = azurerm_virtual_network.example.name
+  subnet_address_prefixes = ["10.0.0.0/26"] # at least /26
+
+  tags = var.tags
+}
+```
 
 <!-- markdownlint-disable -->
 <!-- BEGIN_TF_DOCS -->

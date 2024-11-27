@@ -15,7 +15,42 @@ with real certificate, or for DEV workloads.
 
 ## Example usage
 
-TODO
+```terraform
+resource "azurerm_resource_group" "example" {
+  name     = "my-rg"
+  location = "italynorth"
+  tags     = var.tags
+}
+
+resource "azurerm_key_vault" "example" {
+  name                        = "my-kv"
+  location                    = azurerm_resource_group.example.location
+  resource_group_name         = azurerm_resource_group.example.name
+  enabled_for_disk_encryption = true
+  tenant_id                   = data.azurerm_client_config.current.tenant_id
+  soft_delete_retention_days  = 7
+  purge_protection_enabled    = false
+
+  sku_name = "standard"
+
+  access_policy {
+    tenant_id           = data.azurerm_client_config.current.tenant_id
+    object_id           = data.azurerm_client_config.current.object_id
+    key_permissions     = ["Get"]
+    secret_permissions  = ["Get"]
+    storage_permissions = ["Get"]
+  }
+}
+
+module "selfsigned" {
+  source = "github.com/pagopa/ict-terraform-modules//azure_key_vault_selfsigned_cert?ref=v1.0.0"
+
+  name         = "my-domain-com"
+  key_vault_id = azurerm_key_vault.example.id
+  subject_cn   = "my.domain.com"
+}
+```
+
 
 <!-- markdownlint-disable -->
 <!-- BEGIN_TF_DOCS -->

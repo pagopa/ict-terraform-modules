@@ -16,7 +16,36 @@ For details about forced tunneling, read [here](https://learn.microsoft.com/en-u
 
 ## Example usage
 
-TODO
+```terraform
+resource "azurerm_resource_group" "example" {
+  name     = "my-rg"
+  location = "italynorth"
+  tags     = var.tags
+}
+
+resource "azurerm_virtual_network" "example" {
+  name                = "my-vnet"
+  location            = "italynorth"
+  location            = azurerm_resource_group.example.location
+  resource_group_name = azurerm_resource_group.example.name
+  address_space       = ["10.0.0.0/16"]
+  tags                = var.tags
+}
+
+module "firewall" {
+  source = "github.com/pagopa/ict-terraform-modules//azure_firewall?ref=v1.0.0"
+
+  base_name                    = "my-afw"
+  resource_group_name          = azurerm_resource_group.example.name
+  location                     = azurerm_resource_group.example.location
+  virtual_network_name         = azurerm_virtual_network.example.name
+  subnet_address_prefixes      = ["10.0.1.0/26"]
+  mgmt_subnet_address_prefixes = ["10.0.1.64/26"]
+  sku_tier                     = "Basic"
+
+  tags = var.tags
+}
+```
 
 <!-- markdownlint-disable -->
 <!-- BEGIN_TF_DOCS -->
