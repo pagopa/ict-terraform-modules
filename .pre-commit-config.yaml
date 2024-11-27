@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/antonbabenko/pre-commit-terraform
-    rev: 89f45610a846f56273a6c4290b3c42534175949e # v1.96.1
+    rev: e0322737dccad136b751416f9e45d9980fe18435 # v1.96.2
     hooks:
       - id: terraform_fmt
       - id: terraform_docs
