@@ -17,3 +17,9 @@ jobs:
       - name: Run analysis
         run: |
           docker run -v $(pwd):/lint -w /lint "ghcr.io/antonbabenko/pre-commit-terraform:$TAG" run -a
+
+      - name: Debug
+        if: always()
+        run: |
+          git --no-pager diff
+      
