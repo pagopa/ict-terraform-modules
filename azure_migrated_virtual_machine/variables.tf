@@ -53,7 +53,7 @@ variable "storage_account_type" {
 }
 
 variable "disk_size_gb" {
-  type        = string
+  type        = number
   description = "Size in GB of the OS disk"
 }
 
