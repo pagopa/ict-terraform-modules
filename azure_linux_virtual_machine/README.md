@@ -111,8 +111,8 @@ module "vm" {
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 4.11.0 |
-| <a name="provider_tls"></a> [tls](#provider\_tls) | 4.0.6 |
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | >= 3.116.0 |
+| <a name="provider_tls"></a> [tls](#provider\_tls) | >= 4.0.6 |
 
 ## Modules
 
