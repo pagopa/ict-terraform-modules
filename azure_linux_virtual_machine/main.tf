@@ -15,7 +15,7 @@ resource "azurerm_ssh_public_key" "public_key" {
   name                = "${var.base_name}-vm${local.index_suffix}-admin-access-key"
   resource_group_name = var.resource_group_name
   location            = var.location
-  public_key          = tls_private_key.ssh[0].public_key_openssh
+  public_key          = tls_private_key.ssh.public_key_openssh
 }
 
 # network interface with private ip
