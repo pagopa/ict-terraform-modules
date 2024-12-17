@@ -155,5 +155,6 @@ No modules.
 |------|-------------|
 | <a name="output_id"></a> [id](#output\_id) | ID of the managed resource |
 | <a name="output_private_ip_address"></a> [private\_ip\_address](#output\_private\_ip\_address) | Primary private ip address |
-| <a name="output_ssh_private_key_pem"></a> [ssh\_private\_key\_pem](#output\_ssh\_private\_key\_pem) | Exported for emergency cases, but Entra ID authentication should be used |
+| <a name="output_ssh_private_key_pem"></a> [ssh\_private\_key\_pem](#output\_ssh\_private\_key\_pem) | Exported for emergency/testing cases, but Entra ID authentication should be used |
+| <a name="output_ssh_username"></a> [ssh\_username](#output\_ssh\_username) | Exported for emergency/testing cases, but Entra ID authentication should be used |
 <!-- END_TF_DOCS -->
