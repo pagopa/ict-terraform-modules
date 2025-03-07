@@ -45,6 +45,7 @@ resource "azurerm_firewall_policy" "this" {
   name                = "${var.base_name}-afwp"
   resource_group_name = var.resource_group_name
   location            = var.location
+  sku                 = var.sku_tier
 
   tags = var.tags
 }
