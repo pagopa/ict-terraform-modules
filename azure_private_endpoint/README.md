@@ -153,5 +153,7 @@ No modules.
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_private_ip"></a> [private\_ip](#output\_private\_ip) | Private IP of the private endpoint |
 <!-- END_TF_DOCS -->
