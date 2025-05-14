@@ -33,7 +33,7 @@ resource "azurerm_subnet_network_security_group_association" "this" {
 locals {
   # map (remote access type) -> (remote access source addresses)
   mgmt_access_src_address_prefixes = {
-    "Bastion"  = data.azurerm_subnet.bastion[0].address_prefixes
+    "Bastion"  = var.management_access.type == "Bastion" ? data.azurerm_subnet.bastion[0].address_prefixes : []
     "Public"   = ["*"]
     "IpRanges" = var.management_access.ip_ranges
   }
