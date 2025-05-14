@@ -8,6 +8,11 @@ output "policy_id" {
   description = "ID of the firewall policy"
 }
 
+output "private_ip_address" {
+  value       = azurerm_firewall.this.ip_configuration[0].private_ip_address
+  description = "Private ip address of the firewall"
+}
+
 output "public_ip_addresses" {
   value       = azurerm_public_ip.firewall.ip_address
   description = "Public ip address of the firewall"
