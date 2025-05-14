@@ -67,6 +67,13 @@ resource "azurerm_linux_virtual_machine" "this" {
     public_key = tls_private_key.ssh.public_key_openssh
   }
 
+  dynamic "boot_diagnostics" {
+    for_each = var.boot_diagnostics_enable ? ["dummy"] : []
+    content {
+      storage_account_uri = var.boot_diagnostics_storage_account_uri
+    }
+  }
+
   identity {
     type         = var.identity.type
     identity_ids = var.identity.identity_ids

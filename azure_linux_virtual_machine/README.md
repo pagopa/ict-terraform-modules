@@ -132,6 +132,8 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_base_name"></a> [base\_name](#input\_base\_name) | Base name of the managed resources | `string` | n/a | yes |
+| <a name="input_boot_diagnostics_enable"></a> [boot\_diagnostics\_enable](#input\_boot\_diagnostics\_enable) | Enable boot diagnostics. Recommended: set to true | `string` | `false` | no |
+| <a name="input_boot_diagnostics_storage_account_uri"></a> [boot\_diagnostics\_storage\_account\_uri](#input\_boot\_diagnostics\_storage\_account\_uri) | The Primary/Secondary Endpoint for the Azure Storage Account which should be used to store Boot Diagnostics, including Console Output and Screenshots from the Hypervisor. Leaving null means: use a Azure managed storage account (recommended) | `string` | `null` | no |
 | <a name="input_identity"></a> [identity](#input\_identity) | Identity attached to the VM. Consider leaving the default SystemAssigned, handy in most cases | <pre>object({<br/>    type         = string<br/>    identity_ids = optional(set(string), null)<br/>  })</pre> | <pre>{<br/>  "identity_ids": null,<br/>  "type": "SystemAssigned"<br/>}</pre> | no |
 | <a name="input_image_offer"></a> [image\_offer](#input\_image\_offer) | Image offer, see docs of source\_image\_reference group in azurerm\_linux\_virtual\_machine | `string` | n/a | yes |
 | <a name="input_image_publisher"></a> [image\_publisher](#input\_image\_publisher) | Image publisher, see docs of source\_image\_reference group in azurerm\_linux\_virtual\_machine | `string` | n/a | yes |

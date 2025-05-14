@@ -103,3 +103,15 @@ variable "image_version" {
   type        = string
   description = "Image version, see docs of source_image_reference group in azurerm_linux_virtual_machine"
 }
+
+variable "boot_diagnostics_enable" {
+  type        = string
+  description = "Enable boot diagnostics. Recommended: set to true"
+  default     = false
+}
+
+variable "boot_diagnostics_storage_account_uri" {
+  type        = string
+  description = "The Primary/Secondary Endpoint for the Azure Storage Account which should be used to store Boot Diagnostics, including Console Output and Screenshots from the Hypervisor. Leaving null means: use a Azure managed storage account (recommended)"
+  default     = null
+}
