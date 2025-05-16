@@ -39,6 +39,18 @@ variable "mgmt_subnet_address_prefixes" {
   description = "CIDRs of the subnet that will be created for the firewall management"
 }
 
+variable "public_ip_reverse_fqdn" {
+  type        = string
+  description = "FQDN associated to the firewall public ip for reverse DNS lookup"
+  default     = null
+}
+
+variable "public_ip_domain_name_label" {
+  type        = string
+  description = "Public ip domain name label for reverse DNS lookup"
+  default     = null
+}
+
 # firewall
 
 variable "firewall_policy_id" {
