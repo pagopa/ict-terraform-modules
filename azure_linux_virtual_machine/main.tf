@@ -44,6 +44,8 @@ resource "azurerm_linux_virtual_machine" "this" {
   network_interface_ids = local.do_create_nic ? [azurerm_network_interface.internal[0].id] : var.network_interface_ids
   size                  = var.size
 
+  custom_data = var.custom_data
+
   os_disk {
     name                 = "${var.base_name}-os-disk${local.index_suffix}"
     caching              = var.os_disk_caching

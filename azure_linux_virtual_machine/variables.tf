@@ -115,3 +115,9 @@ variable "boot_diagnostics_storage_account_uri" {
   description = "The Primary/Secondary Endpoint for the Azure Storage Account which should be used to store Boot Diagnostics, including Console Output and Screenshots from the Hypervisor. Leaving null means: use a Azure managed storage account (recommended)"
   default     = null
 }
+
+variable "custom_data" {
+  type        = string
+  description = "Base64 encoded cloud init file"
+  default     = null
+}
