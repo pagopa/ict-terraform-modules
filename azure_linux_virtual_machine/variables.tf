@@ -84,24 +84,35 @@ variable "os_disk_storage_account_type" {
   default     = "Standard_LRS"
 }
 
+# TODO single image varaiable object valued with validation
+variable "image_id" {
+  type        = string
+  description = "ID of the image to deploy. Mutually exclusive with all other image_ variables."
+  default     = null
+}
+
 variable "image_publisher" {
   type        = string
   description = "Image publisher, see docs of source_image_reference group in azurerm_linux_virtual_machine"
+  default     = null
 }
 
 variable "image_offer" {
   type        = string
   description = "Image offer, see docs of source_image_reference group in azurerm_linux_virtual_machine"
+  default     = null
 }
 
 variable "image_sku" {
   type        = string
   description = "Image sku, see docs of source_image_reference group in azurerm_linux_virtual_machine"
+  default     = null
 }
 
 variable "image_version" {
   type        = string
   description = "Image version, see docs of source_image_reference group in azurerm_linux_virtual_machine"
+  default     = null
 }
 
 variable "boot_diagnostics_enable" {

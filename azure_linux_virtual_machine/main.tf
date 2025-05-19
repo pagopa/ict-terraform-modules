@@ -52,11 +52,16 @@ resource "azurerm_linux_virtual_machine" "this" {
     storage_account_type = var.os_disk_storage_account_type
   }
 
-  source_image_reference {
-    publisher = var.image_publisher
-    offer     = var.image_offer
-    sku       = var.image_sku
-    version   = var.image_version
+  source_image_id = var.image_id
+
+  dynamic "source_image_reference" {
+    for_each = var.image_id == null ? ["dummy"] : []
+    content {
+      publisher = var.image_publisher
+      offer     = var.image_offer
+      sku       = var.image_sku
+      version   = var.image_version
+    }
   }
 
   computer_name  = "${var.base_name}${local.index_suffix}"
