@@ -123,7 +123,7 @@ module "private_endpoint_storage_dfs" {
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | >= 3.116.0 |
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 4.29.0 |
 
 ## Modules
 

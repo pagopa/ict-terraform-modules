@@ -111,8 +111,8 @@ module "vm" {
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | >= 3.116.0 |
-| <a name="provider_tls"></a> [tls](#provider\_tls) | >= 4.0.6 |
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 4.29.0 |
+| <a name="provider_tls"></a> [tls](#provider\_tls) | 4.1.0 |
 
 ## Modules
 
@@ -134,11 +134,13 @@ No modules.
 | <a name="input_base_name"></a> [base\_name](#input\_base\_name) | Base name of the managed resources | `string` | n/a | yes |
 | <a name="input_boot_diagnostics_enable"></a> [boot\_diagnostics\_enable](#input\_boot\_diagnostics\_enable) | Enable boot diagnostics. Recommended: set to true | `string` | `false` | no |
 | <a name="input_boot_diagnostics_storage_account_uri"></a> [boot\_diagnostics\_storage\_account\_uri](#input\_boot\_diagnostics\_storage\_account\_uri) | The Primary/Secondary Endpoint for the Azure Storage Account which should be used to store Boot Diagnostics, including Console Output and Screenshots from the Hypervisor. Leaving null means: use a Azure managed storage account (recommended) | `string` | `null` | no |
+| <a name="input_custom_data"></a> [custom\_data](#input\_custom\_data) | Base64 encoded cloud init file | `string` | `null` | no |
 | <a name="input_identity"></a> [identity](#input\_identity) | Identity attached to the VM. Consider leaving the default SystemAssigned, handy in most cases | <pre>object({<br/>    type         = string<br/>    identity_ids = optional(set(string), null)<br/>  })</pre> | <pre>{<br/>  "identity_ids": null,<br/>  "type": "SystemAssigned"<br/>}</pre> | no |
-| <a name="input_image_offer"></a> [image\_offer](#input\_image\_offer) | Image offer, see docs of source\_image\_reference group in azurerm\_linux\_virtual\_machine | `string` | n/a | yes |
-| <a name="input_image_publisher"></a> [image\_publisher](#input\_image\_publisher) | Image publisher, see docs of source\_image\_reference group in azurerm\_linux\_virtual\_machine | `string` | n/a | yes |
-| <a name="input_image_sku"></a> [image\_sku](#input\_image\_sku) | Image sku, see docs of source\_image\_reference group in azurerm\_linux\_virtual\_machine | `string` | n/a | yes |
-| <a name="input_image_version"></a> [image\_version](#input\_image\_version) | Image version, see docs of source\_image\_reference group in azurerm\_linux\_virtual\_machine | `string` | n/a | yes |
+| <a name="input_image_id"></a> [image\_id](#input\_image\_id) | ID of the image to deploy. Mutually exclusive with all other image\_ variables. | `string` | `null` | no |
+| <a name="input_image_offer"></a> [image\_offer](#input\_image\_offer) | Image offer, see docs of source\_image\_reference group in azurerm\_linux\_virtual\_machine | `string` | `null` | no |
+| <a name="input_image_publisher"></a> [image\_publisher](#input\_image\_publisher) | Image publisher, see docs of source\_image\_reference group in azurerm\_linux\_virtual\_machine | `string` | `null` | no |
+| <a name="input_image_sku"></a> [image\_sku](#input\_image\_sku) | Image sku, see docs of source\_image\_reference group in azurerm\_linux\_virtual\_machine | `string` | `null` | no |
+| <a name="input_image_version"></a> [image\_version](#input\_image\_version) | Image version, see docs of source\_image\_reference group in azurerm\_linux\_virtual\_machine | `string` | `null` | no |
 | <a name="input_index_suffix"></a> [index\_suffix](#input\_index\_suffix) | Index suffix for the VM and related resource, for example set '01' for having a 'test' VM named 'test-vm-01' | `string` | `null` | no |
 | <a name="input_location"></a> [location](#input\_location) | Location | `string` | n/a | yes |
 | <a name="input_network_interface_ids"></a> [network\_interface\_ids](#input\_network\_interface\_ids) | Network interfaces to attach to the VM. If null, a default one with private IP will be provided | `list(string)` | `null` | no |
@@ -156,6 +158,7 @@ No modules.
 | Name | Description |
 |------|-------------|
 | <a name="output_id"></a> [id](#output\_id) | ID of the managed resource |
+| <a name="output_identity_principal_id"></a> [identity\_principal\_id](#output\_identity\_principal\_id) | Principal ID of the VM managed identity |
 | <a name="output_private_ip_address"></a> [private\_ip\_address](#output\_private\_ip\_address) | Primary private ip address |
 | <a name="output_ssh_private_key_pem"></a> [ssh\_private\_key\_pem](#output\_ssh\_private\_key\_pem) | Exported for emergency/testing cases, but Entra ID authentication should be used |
 | <a name="output_ssh_username"></a> [ssh\_username](#output\_ssh\_username) | Exported for emergency/testing cases, but Entra ID authentication should be used |
