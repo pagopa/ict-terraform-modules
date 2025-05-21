@@ -18,3 +18,8 @@ output "ssh_username" {
   value       = tolist(azurerm_linux_virtual_machine.this.admin_ssh_key[*].username)[0]
   description = "Exported for emergency/testing cases, but Entra ID authentication should be used"
 }
+
+output "identity_principal_id" {
+  value       = azurerm_linux_virtual_machine.this.identity[0].principal_id
+  description = "Principal ID of the VM managed identity"
+}
