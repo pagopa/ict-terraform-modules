@@ -11,4 +11,6 @@ repos:
           - --args=-no-color
       - id: terraform_trivy
         args:
-          - --args=--skip-dirs="**/.terraform"
+          # - --args=--skip-dirs="**/.terraform"
+          - --hook-config=--parallelism-limit=1
+
