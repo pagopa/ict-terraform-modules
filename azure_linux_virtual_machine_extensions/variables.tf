@@ -61,16 +61,18 @@ variable "azure_monitor_agent" {
 #
 variable "key_vault" {
   type = object({
-    enabled                  = bool
-    key_vault_name           = string
-    cert_name                = string
-    extension_version        = optional(string, "3.0")
-    polling_interval_seconds = optional(number, 3600)
+    enabled                       = bool
+    key_vault_name                = string
+    key_vault_resource_group_name = string
+    cert_name                     = string
+    extension_version             = optional(string, "3.0")
+    polling_interval_seconds      = optional(number, 3600)
   })
   description = "Key Vault extension for keeping certs in sync with Key Vault"
   default = {
-    enabled        = false
-    key_vault_name = "none"
-    cert_name      = "none"
+    enabled                       = false
+    key_vault_name                = "none"
+    key_vault_resource_group_name = "none"
+    cert_name                     = "none"
   }
 }
