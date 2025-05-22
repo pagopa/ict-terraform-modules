@@ -76,7 +76,7 @@ resource "azurerm_virtual_machine_extension" "key_vault" {
   settings = <<EOT
 {
   "secretsManagementSettings": {
-    "pollingIntervalInS": ${var.key_vault.polling_interval_seconds},
+    "pollingIntervalInS": "${var.key_vault.polling_interval_seconds}",
     "linkOnRenewal": false,
     "requireInitialSync": true,
     "aclEnabled": false,
