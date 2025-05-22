@@ -56,13 +56,6 @@ resource "azurerm_monitor_data_collection_rule_association" "dce_association" {
 # Key Vault
 #
 
-data "azurerm_key_vault" "kv" {
-  count = var.key_vault.enabled ? 1 : 0
-
-  name                = var.key_vault.key_vault_name
-  resource_group_name = var.key_vault.key_vault_resource_group_name
-}
-
 # https://learn.microsoft.com/en-us/azure/virtual-machines/extensions/key-vault-linux
 resource "azurerm_virtual_machine_extension" "key_vault" {
   count = var.key_vault.enabled ? 1 : 0
@@ -83,7 +76,7 @@ resource "azurerm_virtual_machine_extension" "key_vault" {
     "aclEnabled": false,
     "observedCertificates": [
       {
-        "url": "${data.azurerm_key_vault.kv[0].vault_uri}/secrets/${var.key_vault.cert_name}",
+        "url": "${var.key_vault.vault_uri}/secrets/${var.key_vault.cert_name}",
         "certificateStoreLocation": "/var/lib/waagent/Microsoft.Azure.KeyVault/${var.key_vault.cert_name}",
         "customSymbolicLinkName": "${var.key_vault.cert_name}",
       }
