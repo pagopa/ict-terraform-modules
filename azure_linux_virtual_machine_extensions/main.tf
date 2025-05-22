@@ -78,7 +78,7 @@ resource "azurerm_virtual_machine_extension" "key_vault" {
       {
         "url": "${var.key_vault.vault_uri}/secrets/${var.key_vault.cert_name}",
         "certificateStoreLocation": "/var/lib/waagent/Microsoft.Azure.KeyVault/${var.key_vault.cert_name}",
-        "customSymbolicLinkName": "${var.key_vault.cert_name}",
+        "customSymbolicLinkName": "${var.key_vault.cert_name}"
       }
     ]
   }
