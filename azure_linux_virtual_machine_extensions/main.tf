@@ -57,7 +57,7 @@ resource "azurerm_monitor_data_collection_rule_association" "dce_association" {
 #
 
 # https://learn.microsoft.com/en-us/azure/virtual-machines/extensions/key-vault-linux
-resource "azurerm_virtual_machine_extension" "azure_monitor_agent" {
+resource "azurerm_virtual_machine_extension" "key_vault" {
   count = var.key_vault.enabled ? 1 : 0
 
   name                       = "KVVMExtensionForLinux"
