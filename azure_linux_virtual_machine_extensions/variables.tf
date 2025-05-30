@@ -48,11 +48,6 @@ variable "azure_monitor_agent" {
     condition     = !var.azure_monitor_agent.enabled || var.azure_monitor_agent.data_collection_rule_id != null
     error_message = "data_collection_rule_id is required when azure monitor agent is enabled"
   }
-
-  validation {
-    condition     = !var.azure_monitor_agent.enabled || var.azure_monitor_agent.data_collection_endpoint_id != null
-    error_message = "data_collection_endpoint_id is required when azure monitor agent is enabled"
-  }
 }
 
 
