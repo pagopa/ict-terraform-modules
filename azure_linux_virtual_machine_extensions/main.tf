@@ -43,7 +43,7 @@ resource "azurerm_monitor_data_collection_rule_association" "dcr_association" {
 
 # associate the vm to a data collection endpoint
 resource "azurerm_monitor_data_collection_rule_association" "dce_association" {
-  count = var.azure_monitor_agent.enabled ? 1 : 0
+  count = var.azure_monitor_agent.enabled && var.azure_monitor_agent.data_collection_endpoint_id != null ? 1 : 0
 
   # it seems that the name must be precisely this one
   name                        = "configurationAccessEndpoint"
