@@ -137,7 +137,7 @@ resource "azurerm_network_security_rule" "outbound_deny_all" {
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 4.29.0 |
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 4.33.0 |
 
 ## Modules
 

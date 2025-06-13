@@ -93,7 +93,7 @@ resource "azurerm_role_assignment" "core_cd_sub_contributor" {
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 4.29.0 |
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 4.33.0 |
 | <a name="provider_github"></a> [github](#provider\_github) | 6.6.0 |
 
 ## Modules
