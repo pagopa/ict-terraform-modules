@@ -133,6 +133,12 @@ variable "custom_data" {
   default     = null
 }
 
+variable "encryption_at_host_enabled" {
+  type        = bool
+  description = "Enable encryption at host. By default it is activated as Azure will complain if you don't"
+  default     = true
+}
+
 #
 # patching
 #
