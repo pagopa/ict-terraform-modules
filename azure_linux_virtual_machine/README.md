@@ -131,6 +131,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_automatic_patching"></a> [automatic\_patching](#input\_automatic\_patching) | Enable automatic patching (neesd Customer Managed Schedule in Azure Maintenance Configuation) | `bool` | `false` | no |
 | <a name="input_base_name"></a> [base\_name](#input\_base\_name) | Base name of the managed resources | `string` | n/a | yes |
 | <a name="input_boot_diagnostics_enable"></a> [boot\_diagnostics\_enable](#input\_boot\_diagnostics\_enable) | Enable boot diagnostics. Recommended: set to true | `string` | `false` | no |
 | <a name="input_boot_diagnostics_storage_account_uri"></a> [boot\_diagnostics\_storage\_account\_uri](#input\_boot\_diagnostics\_storage\_account\_uri) | The Primary/Secondary Endpoint for the Azure Storage Account which should be used to store Boot Diagnostics, including Console Output and Screenshots from the Hypervisor. Leaving null means: use a Azure managed storage account (recommended) | `string` | `null` | no |

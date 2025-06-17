@@ -44,6 +44,10 @@ resource "azurerm_linux_virtual_machine" "this" {
   network_interface_ids = local.do_create_nic ? [azurerm_network_interface.internal[0].id] : var.network_interface_ids
   size                  = var.size
 
+  bypass_platform_safety_checks_on_user_schedule_enabled = var.automatic_patching
+  patch_assessment_mode                                  = var.automatic_patching ? "AutomaticByPlatform" : "ImageDefault"
+  patch_mode                                             = var.automatic_patching ? "AutomaticByPlatform" : "ImageDefault"
+
   custom_data = var.custom_data
 
   os_disk {
