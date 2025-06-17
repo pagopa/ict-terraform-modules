@@ -50,6 +50,8 @@ resource "azurerm_linux_virtual_machine" "this" {
 
   custom_data = var.custom_data
 
+  encryption_at_host_enabled = var.encryption_at_host_enabled
+
   os_disk {
     name                 = "${var.base_name}-os-disk${local.index_suffix}"
     caching              = var.os_disk_caching
