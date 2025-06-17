@@ -132,3 +132,12 @@ variable "custom_data" {
   description = "Base64 encoded cloud init file"
   default     = null
 }
+
+#
+# patching
+#
+variable "automatic_patching" {
+  type        = bool
+  description = "Enable automatic patching (neesd Customer Managed Schedule in Azure Maintenance Configuation)"
+  default     = false
+}
