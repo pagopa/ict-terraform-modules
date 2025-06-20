@@ -71,3 +71,17 @@ variable "key_vault" {
     cert_store_location = "none"
   }
 }
+
+
+#
+# guest configuration
+#
+variable "guest_configuration" {
+  type = object({
+    enabled = bool
+  })
+  description = "Guest Configuration extension allows policy evaluation on OS and more"
+  default = {
+    enabled = false
+  }
+}

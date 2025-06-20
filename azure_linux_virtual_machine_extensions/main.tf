@@ -87,3 +87,22 @@ EOT
 
   tags = var.tags
 }
+
+
+#
+# Guest Configuration for policy evaluation
+#
+
+# https://learn.microsoft.com/en-us/azure/virtual-machines/extensions/guest-configuration
+resource "azurerm_virtual_machine_extension" "guest_configuration" {
+  count = var.guest_configuration.enabled ? 1 : 0
+
+  name                       = "AzurePolicyforLinux"
+  virtual_machine_id         = var.virtual_machine_id
+  publisher                  = "Microsoft.GuestConfiguration"
+  type                       = "ConfigurationForLinux"
+  type_handler_version       = "1.0"
+  auto_upgrade_minor_version = true
+
+  tags = var.tags
+}
