@@ -13,10 +13,10 @@ resource "github_repository_environment" "this" {
   }
 
   dynamic "reviewers" {
-    for_each = var.deployments.review_required ? ["dummy"] : []
+    for_each = length(var.deployment_reviewer_team_ids) + length(var.deployment_reviewer_user_ids) > 0 ? ["dummy"] : []
     content {
-      teams = var.deployments.reviewer_teams_ids
-      users = var.deployments.reviewer_users_ids
+      teams = var.deployment_reviewer_team_ids
+      users = var.deployment_reviewer_user_ids
     }
   }
 }
