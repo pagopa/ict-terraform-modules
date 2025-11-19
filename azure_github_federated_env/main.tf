@@ -6,6 +6,19 @@ resource "github_repository_environment" "this" {
   repository          = var.github_repository
   prevent_self_review = false
   can_admins_bypass   = true
+
+  deployment_branch_policy {
+    protected_branches     = true
+    custom_branch_policies = false
+  }
+
+  dynamic "reviewers" {
+    for_each = var.deployments.review_required ? ["dummy"] : []
+    content {
+      teams = var.deployments.reviewer_teams_ids
+      users = var.deployments.reviewer_users_ids
+    }
+  }
 }
 
 # managed identity
