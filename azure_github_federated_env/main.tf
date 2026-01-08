@@ -8,7 +8,7 @@ resource "github_repository_environment" "this" {
   can_admins_bypass   = true
 
   deployment_branch_policy {
-    protected_branches     = true
+    protected_branches     = var.deployment_forbid_unprotected_branches
     custom_branch_policies = false
   }
 

@@ -55,3 +55,9 @@ variable "deployment_reviewer_user_ids" {
   description = "IDs (graphql) of github users entitled to review deployments in this environment. Without this and/or reviewer_user_ids no review will be asked."
   default     = []
 }
+
+variable "deployment_forbid_unprotected_branches" {
+  type        = bool
+  description = "If enabled, deployment in this environment are allowed on protected branches only"
+  default     = false
+}
