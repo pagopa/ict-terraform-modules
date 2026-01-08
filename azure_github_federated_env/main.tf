@@ -7,9 +7,12 @@ resource "github_repository_environment" "this" {
   prevent_self_review = false
   can_admins_bypass   = true
 
-  deployment_branch_policy {
-    protected_branches     = var.deployment_forbid_unprotected_branches
-    custom_branch_policies = false
+  dynamic "deployment_branch_policy" {
+    for_each = var.deployment_forbid_unprotected_branches ? ["dummy"] : []
+    content {
+      protected_branches     = true
+      custom_branch_policies = false
+    }
   }
 
   dynamic "reviewers" {
