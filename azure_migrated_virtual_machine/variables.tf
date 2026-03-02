@@ -66,3 +66,9 @@ variable "hyper_v_generation" {
     error_message = "Hyper-V generation can be either V1 or V2"
   }
 }
+
+variable "zone" {
+  type        = string
+  description = "VM availability zone"
+  default     = null
+}
