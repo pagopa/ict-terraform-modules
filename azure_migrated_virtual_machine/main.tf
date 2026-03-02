@@ -24,6 +24,7 @@ resource "azurerm_managed_disk" "os" {
   disk_size_gb         = var.disk_size_gb
   hyper_v_generation   = var.hyper_v_generation
   os_type              = var.os_type
+  zone                 = var.zone
 
   tags = var.tags
 
@@ -47,6 +48,7 @@ resource "azurerm_virtual_machine" "this" {
   vm_size                          = var.size
   delete_data_disks_on_termination = false
   delete_os_disk_on_termination    = false
+  zones                            = [var.zone]
 
   storage_os_disk {
     name            = azurerm_managed_disk.os.name
