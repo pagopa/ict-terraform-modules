@@ -63,7 +63,7 @@ variable "runtime_version" {
 }
 
 variable "instance_memory_in_mb" {
-  type        = int
+  type        = number
   description = "Instance memory in MB"
   default     = 512
 }
@@ -89,7 +89,7 @@ variable "application_insights_connection_string" {
 }
 
 variable "maximum_instance_count" {
-  type        = int
+  type        = number
   description = "Max instacne count (autoscaling)"
   default     = 1
 }
