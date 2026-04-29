@@ -93,3 +93,15 @@ variable "maximum_instance_count" {
   description = "Max instacne count (autoscaling)"
   default     = 1
 }
+
+variable "health_check_path" {
+  description = "The path on which the Health Check service will ping (e.g., /api/health). Must start with a forward slash."
+  type        = string
+  default     = null
+}
+
+variable "health_check_eviction_time_in_min" {
+  description = "The amount of time in minutes (between 2 and 10) that a node can be unhealthy before being removed from the load balancer."
+  type        = number
+  default     = 2
+}

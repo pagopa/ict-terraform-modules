@@ -8,6 +8,7 @@ resource "azurerm_storage_account" "this" {
   account_replication_type = "LRS"
 
   public_network_access_enabled = false
+
   network_rules {
     default_action = "Deny"
     bypass         = ["AzureServices"]
@@ -88,6 +89,8 @@ resource "azurerm_function_app_flex_consumption" "this" {
     vnet_route_all_enabled                 = true
     application_insights_connection_string = var.application_insights_connection_string
     minimum_tls_version                    = "1.2"
+    health_check_path                      = var.health_check_path
+    health_check_eviction_time_in_min      = var.health_check_eviction_time_in_min
   }
 
   dynamic "always_ready" {
@@ -128,7 +131,7 @@ resource "azurerm_role_assignment" "func_rbac" {
     "Storage Table Data Contributor"
   ])
 
-  scope                = azurerm_storage_account.sa.id
+  scope                = azurerm_storage_account.this.id
   role_definition_name = each.value
   principal_id         = azurerm_function_app_flex_consumption.this.identity[0].principal_id
 }
@@ -142,7 +145,7 @@ resource "azurerm_private_endpoint" "func" {
 
   private_service_connection {
     name                           = "psc-func"
-    private_connection_resource_id = azurerm_function_app_flex_consumption.func.id
+    private_connection_resource_id = azurerm_function_app_flex_consumption.this.id
     subresource_names              = ["sites"]
     is_manual_connection           = false
   }
