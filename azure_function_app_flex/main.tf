@@ -24,10 +24,6 @@ resource "azurerm_storage_container" "this" {
   container_access_type = "private"
 }
 
-locals {
-  storage_services = ["blob", "queue", "table"]
-}
-
 # private endpoints for storage
 resource "azurerm_private_endpoint" "storage" {
   for_each = toset([
@@ -78,7 +74,9 @@ resource "azurerm_function_app_flex_consumption" "this" {
   storage_authentication_type = "SystemAssignedIdentity"
 
   app_settings = merge(var.app_settings, {
-    "AzureWebJobsStorage__accountName" = azurerm_storage_account.this.name
+    # these are to fix the terraform provider for the managed identity
+    AzureWebJobsStorage__accountName = azurerm_storage_account.this.name
+    AzureWebJobsStorage              = ""
   })
 
   identity {
@@ -110,7 +108,8 @@ resource "azurerm_function_app_flex_consumption" "this" {
   lifecycle {
     ignore_changes = [
       app_settings["WEBSITE_RUN_FROM_PACKAGE"],
-      site_config[0].worker_count
+      site_config[0].worker_count,
+      tags["hidden-link: /app-insights-resource-id"],
     ]
   }
 }
