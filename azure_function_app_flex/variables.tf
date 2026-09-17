@@ -36,7 +36,7 @@ variable "private_endpoint_subnet_id" {
 
   validation {
     condition = var.private_endpoint_subnet_id != null || alltrue([
-      for zone_id in values(var.private_dns_zone_ids) : trimspace(coalesce(zone_id, "")) == ""
+      for zone_id in values(var.private_dns_zone_ids) : (zone_id == null ? "" : trimspace(zone_id)) == ""
     ])
     error_message = "private_endpoint_subnet_id is required when at least one private endpoint DNS zone ID is provided."
   }
