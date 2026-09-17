@@ -122,7 +122,7 @@ locals {
       blob  = var.private_dns_zone_ids.blob
       queue = var.private_dns_zone_ids.queue
       table = var.private_dns_zone_ids.table
-    } : endpoint_name => dns_zone_id if dns_zone_id != null && trimspace(dns_zone_id) != ""
+    } : endpoint_name => dns_zone_id if trimspace(coalesce(dns_zone_id, "")) != ""
   }
 
   function_private_endpoint_dns_zone_id = var.private_dns_zone_ids.sites
@@ -143,7 +143,7 @@ resource "azurerm_role_assignment" "func_rbac" {
 
 # private endpoint for function app (inbound traffic)
 resource "azurerm_private_endpoint" "func" {
-  count = local.function_private_endpoint_dns_zone_id != null && trimspace(local.function_private_endpoint_dns_zone_id) != "" ? 1 : 0
+  count = trimspace(coalesce(local.function_private_endpoint_dns_zone_id, "")) != "" ? 1 : 0
 
   name                = "${var.name}-pep"
   location            = var.location
