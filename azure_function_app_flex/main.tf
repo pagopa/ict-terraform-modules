@@ -104,6 +104,7 @@ resource "azurerm_function_app_flex_consumption" "this" {
   lifecycle {
     ignore_changes = [
       app_settings["WEBSITE_RUN_FROM_PACKAGE"],
+      app_settings["AzureWebJobsStorage"],
       site_config[0].worker_count,
       tags["hidden-link: /app-insights-resource-id"],
     ]
@@ -122,7 +123,7 @@ locals {
       blob  = var.private_dns_zone_ids.blob
       queue = var.private_dns_zone_ids.queue
       table = var.private_dns_zone_ids.table
-    } : endpoint_name => dns_zone_id if (dns_zone_id == null ? "" : trimspace(dns_zone_id)) != ""
+    } : endpoint_name => dns_zone_id if(dns_zone_id == null ? "" : trimspace(dns_zone_id)) != ""
   }
 
   function_private_endpoint_dns_zone_id = var.private_dns_zone_ids.sites
