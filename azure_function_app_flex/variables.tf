@@ -32,16 +32,25 @@ variable "vnet_integration_subnet_id" {
 variable "private_endpoint_subnet_id" {
   type        = string
   description = "ID of subnet where private endpoints (func and storage) will be created"
+  default     = null
+
+  validation {
+    condition = var.private_endpoint_subnet_id != null || alltrue([
+      for zone_id in values(var.private_dns_zone_ids) : (zone_id == null ? "" : trimspace(zone_id)) == ""
+    ])
+    error_message = "private_endpoint_subnet_id is required when at least one private endpoint DNS zone ID is provided."
+  }
 }
 
 variable "private_dns_zone_ids" {
   type = object({
-    blob  = string
-    queue = string
-    table = string
-    sites = string
+    blob  = optional(string, null)
+    queue = optional(string, null)
+    table = optional(string, null)
+    sites = optional(string, null)
   })
-  description = "IDs of private DNS zones for private endpoints"
+  description = "IDs of private DNS zones for private endpoints. Set each value to null (or empty) to disable the corresponding private endpoint."
+  default     = {}
 }
 
 

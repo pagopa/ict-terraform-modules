@@ -26,11 +26,7 @@ resource "azurerm_storage_container" "this" {
 
 # private endpoints for storage
 resource "azurerm_private_endpoint" "storage" {
-  for_each = toset([
-    "blob",
-    "queue",
-    "table",
-  ])
+  for_each = local.storage_private_endpoint_dns_zone_ids
 
   name                = "${var.name}-st-${each.key}-pep"
   location            = var.location
@@ -46,7 +42,7 @@ resource "azurerm_private_endpoint" "storage" {
 
   private_dns_zone_group {
     name                 = "dns-group-${each.key}"
-    private_dns_zone_ids = [lookup(var.private_dns_zone_ids, each.key)]
+    private_dns_zone_ids = [each.value]
   }
 
   tags = var.tags
@@ -120,6 +116,16 @@ locals {
     "Storage Queue Data Contributor",
     "Storage Table Data Contributor"
   ]
+
+  storage_private_endpoint_dns_zone_ids = {
+    for endpoint_name, dns_zone_id in {
+      blob  = var.private_dns_zone_ids.blob
+      queue = var.private_dns_zone_ids.queue
+      table = var.private_dns_zone_ids.table
+    } : endpoint_name => dns_zone_id if (dns_zone_id == null ? "" : trimspace(dns_zone_id)) != ""
+  }
+
+  function_private_endpoint_dns_zone_id = var.private_dns_zone_ids.sites
 }
 
 # rbac for function -> storage
@@ -137,6 +143,8 @@ resource "azurerm_role_assignment" "func_rbac" {
 
 # private endpoint for function app (inbound traffic)
 resource "azurerm_private_endpoint" "func" {
+  count = (local.function_private_endpoint_dns_zone_id == null ? "" : trimspace(local.function_private_endpoint_dns_zone_id)) != "" ? 1 : 0
+
   name                = "${var.name}-pep"
   location            = var.location
   resource_group_name = var.resource_group_name
@@ -151,7 +159,7 @@ resource "azurerm_private_endpoint" "func" {
 
   private_dns_zone_group {
     name                 = "dns-group-sites"
-    private_dns_zone_ids = [var.private_dns_zone_ids["sites"]]
+    private_dns_zone_ids = [local.function_private_endpoint_dns_zone_id]
   }
 
   tags = var.tags
