@@ -24,7 +24,7 @@ resource "azapi_update_resource" "func_app_settings_workaround" {
 
   body = {
     properties = merge(
-      jsondecode(data.azapi_resource_action.func_app_settings[0].output).properties,
+      data.azapi_resource_action.func_app_settings[0].output.properties,
       {
         AzureWebJobsStorage = ""
       }
