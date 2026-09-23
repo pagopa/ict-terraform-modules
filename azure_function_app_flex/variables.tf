@@ -114,3 +114,9 @@ variable "health_check_eviction_time_in_min" {
   type        = number
   default     = 2
 }
+
+variable "enable_azurewebjobsstorage_workaround" {
+  type        = bool
+  description = "Enable workaround for azurerm_function_app_flex_consumption issue #33211 by forcing AzureWebJobsStorage to an empty value."
+  default     = true
+}
