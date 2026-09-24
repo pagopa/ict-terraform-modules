@@ -72,7 +72,7 @@ resource "azurerm_function_app_flex_consumption" "this" {
   app_settings = merge(var.app_settings, {
     # these are to fix the terraform provider for the managed identity
     AzureWebJobsStorage__accountName = azurerm_storage_account.this.name
-    AzureWebJobsStorage              = ""
+    AzureWebJobsStorage__credential  = "managedidentity"
   })
 
   identity {
@@ -104,7 +104,6 @@ resource "azurerm_function_app_flex_consumption" "this" {
   lifecycle {
     ignore_changes = [
       app_settings["WEBSITE_RUN_FROM_PACKAGE"],
-      app_settings["AzureWebJobsStorage"],
       site_config[0].worker_count,
       tags["hidden-link: /app-insights-resource-id"],
     ]
